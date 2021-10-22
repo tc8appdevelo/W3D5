@@ -9,13 +9,15 @@ class PolyTreeNode
     end
 
 
-    # def has_node?(node)
-    #     @children.include?(node)
-    # end
+    def has_node?(node)
+        @children.include?(node)
+    end
 
-    # def parent=(node)
-    #     if !has_node?(node)
-            
-    # end
+    def parent=(node)
+        if !has_node?(node.value)
+            @parent = node.value
+            @children << node.value
+        end
+    end
 
 end
