@@ -1,13 +1,14 @@
 require_relative "poly_tree_node"
 
 class KnightPathFinder
-    attr_reader :considered_position
+    attr_reader :con_pos
     def initialize(starting_pos)
-        @starting_pos = starting_pos
-        @considered_position = []
+        @starting_pos = PolyTreeNode.new(starting_pos)
+        @con_pos = []
     end
 
     def in_range?(pos)
+        row, col = pos
         if (row > 7 || col > 7) || (row < 0 || col < 0)
             false
         else
@@ -15,9 +16,10 @@ class KnightPathFinder
         end
     end
 
-    def self.valid_moves(pos)
-        row ,col = pos
+    def valid_moves(pos)
+        
         # val = gets.chomp 
+        valid_moves = possible_moves(pos).select { |arr| in_range?(arr) }
     end
 
     def possible_moves(pos)
@@ -31,5 +33,6 @@ class KnightPathFinder
         arr[0], arr[1] = (arr[0] + pos[0]), (arr[1] + pos[1])
        end
     end
+
 
 end
