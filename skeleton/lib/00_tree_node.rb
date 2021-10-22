@@ -37,8 +37,27 @@ class PolyTreeNode
 
     end
 
-    
+    def add_child(node)
+        node.parent = self
+    end
 
+    def remove_child(node)
+        raise "not a child"if node.parent == nil 
+        node.parent = nil
+    end
+
+
+    def dfs(target)
+        # puts "----------------"
+        # puts target
+        return self if self.value == target
+
+        self.children.each do |child|
+            search_result = child.dfs(target)
+            return search_result until search_result.nil?
+        end
+        nil
+    end
 
 end
 
